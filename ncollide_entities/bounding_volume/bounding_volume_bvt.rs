@@ -7,7 +7,6 @@ pub struct BoundingVolumeInterferencesCollector<'a, B: 'a, BV: 'a> {
     collector: &'a mut Vec<B>
 }
 
-#[old_impl_check]
 impl<'a, B, BV> BoundingVolumeInterferencesCollector<'a, B, BV> {
     /// Creates a new `BoundingVolumeInterferencesCollector`.
     #[inline]
@@ -19,7 +18,6 @@ impl<'a, B, BV> BoundingVolumeInterferencesCollector<'a, B, BV> {
     }
 }
 
-#[old_impl_check]
 impl<'a, N, B: Clone, BV: BoundingVolume<N>> BVTVisitor<B, BV> for BoundingVolumeInterferencesCollector<'a, B, BV> {
     #[inline]
     fn visit_internal(&mut self, bv: &BV) -> bool {

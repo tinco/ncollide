@@ -5,7 +5,6 @@ use shape::{Cone, Cylinder, Capsule};
 use shape::{Triangle, Segment};
 use math::{Scalar, Point, Vect};
 
-#[old_impl_check]
 impl<N, P, V, M> HasAABB<P, M> for Cone<N>
     where N: Scalar,
           P: Point<N, V>,
@@ -17,7 +16,6 @@ impl<N, P, V, M> HasAABB<P, M> for Cone<N>
     }
 }
 
-#[old_impl_check]
 impl<N, P, V, M> HasAABB<P, M> for Cylinder<N>
     where N: Scalar,
           P: Point<N, V>,
@@ -29,7 +27,6 @@ impl<N, P, V, M> HasAABB<P, M> for Cylinder<N>
     }
 }
 
-#[old_impl_check]
 impl<N, P, V, M> HasAABB<P, M> for Capsule<N>
     where N: Scalar,
           P: Point<N, V>,
@@ -41,7 +38,6 @@ impl<N, P, V, M> HasAABB<P, M> for Capsule<N>
     }
 }
 
-#[old_impl_check]
 impl<N, P, V, M> HasAABB<P, M> for Triangle<P>
     where N: Scalar,
           P: Point<N, V>,
@@ -54,7 +50,6 @@ impl<N, P, V, M> HasAABB<P, M> for Triangle<P>
     }
 }
 
-#[old_impl_check]
 impl<N, P, V, M> HasAABB<P, M> for Segment<P>
     where N: Scalar,
           P: Point<N, V>,

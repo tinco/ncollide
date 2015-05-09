@@ -1,7 +1,7 @@
 use std::ops::{Add, Sub, Mul};
 use rand::{self, Rand};
 use std::f64::EPSILON;
-use na::{Inv, POrd, SquareMat, Outer, Dot, RMul};
+use na::{Inv, POrd, SquareMat, Outer, Dot};
 use na;
 use math::{Scalar, Vect};
 
@@ -72,7 +72,7 @@ pub fn minimize_with_bfgs<N, V, M, F: Fn(&V) -> N, D: Fn(&V) -> V>(
                           -> (V, N)
     where N: Scalar,
           V: Vect<N> + Outer<M>,
-          M: SquareMat<N, V> + Add<M, Output = M> + Sub<M, Output = M> + Clone + Copy {
+          M: SquareMat<N, V> + Add<M, Output = M> + Sub<M, Output = M> + Mul<V, Output=V> + Clone + Copy {
     let mut best_sol     = domain_min.clone();
     let mut best_sol_val = (*f)(domain_min);
     let domain_width     = *domain_max - *domain_min;
@@ -159,7 +159,7 @@ pub fn bfgs<N, V, M, SS, F: Fn(&V) -> N, D: Fn(&V) -> V>(
             -> V
     where N:  Scalar,
           V:  Vect<N> + Outer<M>,
-          M:  SquareMat<N, V> + Add<M, Output = M> + Sub<M, Output = M> + Clone + Copy,
+          M:  SquareMat<N, V> + Add<M, Output = M> + Sub<M, Output = M> + Mul<V, Output=V> + Clone + Copy,
           SS: LineSearch<N, V> {
     let mut x  = guess;
     let mut hx = hessian;
@@ -171,7 +171,7 @@ pub fn bfgs<N, V, M, SS, F: Fn(&V) -> N, D: Fn(&V) -> V>(
 
     for _ in 0 .. niter {
         let     new_dx     = (*df)(&x);
-        let mut search_dir = hx.rmul(&-new_dx);
+        let mut search_dir = hx.mul(-new_dx);
 
         if na::dot(&search_dir, &new_dx) >= na::zero() {
             // Not a descent direction.
@@ -204,7 +204,7 @@ pub fn bfgs<N, V, M, SS, F: Fn(&V) -> N, D: Fn(&V) -> V>(
             let idenom = na::one::<N>() / denom;
 
             hx = hx +
-                 na::outer(&step, &(step * ((denom + na::dot(&d_dx, &(hx.rmul(&d_dx)))) * idenom * idenom))) -
+                 na::outer(&step, &(step * ((denom + na::dot(&d_dx, &(hx.mul(d_dx)))) * idenom * idenom))) -
                  (hx * na::outer(&d_dx, &(step * idenom)) + na::outer(&step, &(d_dx * idenom)) * hx);
         }
 

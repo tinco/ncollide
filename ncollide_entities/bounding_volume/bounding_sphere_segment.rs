@@ -5,7 +5,6 @@ use shape::Segment;
 use math::{Scalar, Point, Vect};
 
 
-#[old_impl_check]
 impl<N, P, V, M> HasBoundingSphere<N, P, M> for Segment<P>
     where N: Scalar,
           P: Point<N, V>,

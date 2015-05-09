@@ -4,7 +4,6 @@ use shape::Reflection;
 use math::{Scalar, Vect};
 
 
-#[old_impl_check]
 impl<'a, N, P, V, M, G: ?Sized> SupportMap<P, V, M> for Reflection<'a, G>
     where N: Scalar,
           P: Neg<Output = P>,

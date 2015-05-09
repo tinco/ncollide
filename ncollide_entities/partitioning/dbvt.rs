@@ -38,7 +38,6 @@ impl<P, B, BV> DBVT<P, B, BV> {
     }
 }
 
-#[old_impl_check]
 impl<N, P, V, B, BV> DBVT<P, B, BV>
     where N: Scalar,
           P:  Point<N, V>,
@@ -113,7 +112,6 @@ struct DBVTInternal<P, B, BV> {
     state:           UpdateState
 }
 
-#[old_impl_check]
 impl<N, P: Point<N, V>, V, BV: Translation<V>, B> DBVTInternal<P, B, BV> {
     /// Creates a new internal node.
     fn new(bounding_volume: BV,
@@ -216,7 +214,6 @@ impl<P, B, BV> DBVTInternal<P, B, BV> {
     }
 }
 
-#[old_impl_check]
 impl<N, P: Point<N, V>, V, B: 'static, BV: Translation<V> + 'static> DBVTLeaf<P, B, BV> {
     /// Creates a new leaf.
     pub fn new(bounding_volume: BV, object: B) -> DBVTLeaf<P, B, BV> {
@@ -306,7 +303,6 @@ impl<N, P: Point<N, V>, V, B: 'static, BV: Translation<V> + 'static> DBVTLeaf<P,
     }
 }
 
-#[old_impl_check]
 impl<N, P, V, BV, B> DBVTNode<P, B, BV>
     where N: Scalar,
           P:  Point<N, V>,
@@ -325,7 +321,6 @@ impl<N, P, V, BV, B> DBVTNode<P, B, BV>
     }
 }
 
-#[old_impl_check]
 impl<N, P, V, B, BV> DBVTInternal<P, B, BV>
     where N: Scalar,
           P:  Point<N, V>,
@@ -337,7 +332,6 @@ impl<N, P, V, B, BV> DBVTInternal<P, B, BV>
     }
 }
 
-#[old_impl_check]
 impl<N, P, V, BV, B> DBVTNode<P, B, BV>
     where N: Scalar,
           P:  Point<N, V>,

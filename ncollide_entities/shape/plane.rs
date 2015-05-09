@@ -14,7 +14,7 @@ pub struct Plane<V> {
     normal: V
 }
 
-impl<N: Scalar, V: Norm<N>> Plane<V> {
+impl<N: Scalar, V: Norm<Output=N>> Plane<V> {
     /// Builds a new plane from its center and its normal.
     #[inline]
     pub fn new(normal: V) -> Plane<V> {

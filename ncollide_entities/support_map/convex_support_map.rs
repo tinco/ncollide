@@ -5,7 +5,6 @@ use shape::Convex;
 use math::{Scalar, Point, Vect};
 
 
-#[old_impl_check]
 impl<N, P, V, M> SupportMap<P, V, M> for Convex<P>
     where N: Scalar,
           P: Point<N, V>,

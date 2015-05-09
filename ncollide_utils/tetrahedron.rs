@@ -1,7 +1,8 @@
 use std::ops::Index;
-use na::{Mat3, Axpy, ScalarMul};
+use na::{Mat3, Axpy};
 use na;
 use math::{Scalar, Point};
+use std::ops::Mul;
 
 /// Computes the volume of a tetrahedron.
 #[inline]
@@ -41,6 +42,6 @@ pub fn tetrahedron_signed_volume<N, P, V>(p1: &P, p2: &P, p3: &P, p4: &P) -> N
 // N where P: FloatPnt<f64>
 pub fn tetrahedron_center<N, P>(p1: &P, p2: &P, p3: &P, p4: &P) -> P
     where N: Scalar,
-          P: Axpy<N> + ScalarMul<N> + Clone {
+          P: Axpy<N> + Mul<N, Output=P> + Clone {
     ::center(&[ p1.clone(), p2.clone(), p3.clone(), p4.clone() ])
 }

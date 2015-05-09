@@ -5,7 +5,6 @@ use shape::Ball;
 use math::{Scalar, Point};
 
 
-#[old_impl_check]
 impl<N, P, V, M> HasBoundingSphere<N, P, M> for Ball<N>
     where N: Scalar,
           P: Point<N, V>,

@@ -2,7 +2,7 @@
 
 use std::ops::{Index, IndexMut, Add, Sub, Mul, Div, Neg};
 use na::{Dim, ApproxEq, Orig, PntAsVec, Axpy, Translate, NumPnt, NumVec, POrd,
-         POrdering, ScalarSub, ScalarAdd, ScalarMul, ScalarDiv, FloatPnt, Bounded};
+         POrdering, FloatPnt, Bounded};
 use na;
 use shape::Reflection;
 use math::{Scalar, Point, Vect};
@@ -260,37 +260,6 @@ impl<P: Sub<P>> Sub<AnnotatedPoint<P>> for AnnotatedPoint<P> {
     #[inline]
     fn sub(self, other: AnnotatedPoint<P>) -> P::Output {
         self.point - other.point
-    }
-}
-
-impl<N, P, V> ScalarSub<N> for AnnotatedPoint<P>
-    where P: Point<N, V> {
-    fn sub_s(&self, _: &N) -> AnnotatedPoint<P> {
-        unimplemented!()
-    }
-}
-
-#[old_impl_check]
-impl<N, P, V> ScalarAdd<N> for AnnotatedPoint<P>
-    where P: Point<N, V> {
-    fn add_s(&self, _: &N) -> AnnotatedPoint<P> {
-        unimplemented!()
-    }
-}
-
-#[old_impl_check]
-impl<N, P, V> ScalarMul<N> for AnnotatedPoint<P>
-    where P: Point<N, V> {
-    fn mul_s(&self, _: &N) -> AnnotatedPoint<P> {
-        unimplemented!()
-    }
-}
-
-#[old_impl_check]
-impl<N, P, V> ScalarDiv<N> for AnnotatedPoint<P>
-    where P: Point<N, V> {
-    fn div_s(&self, _: &N) -> AnnotatedPoint<P> {
-        unimplemented!()
     }
 }
 

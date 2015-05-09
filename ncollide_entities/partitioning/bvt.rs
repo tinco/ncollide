@@ -105,7 +105,6 @@ impl<B, BV> BVT<B, BV> {
     }
 }
 
-#[old_impl_check]
 impl<N, V, B, BV> BVT<B, BV>
     where N:  Scalar,
           V:  Vect<N>,

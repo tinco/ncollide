@@ -10,7 +10,7 @@ use std::ops::{IndexMut, Mul};
 use num::{One};
 use na::{Pnt1, Pnt2, Pnt3, Pnt4, Vec1, Vec2, Vec3, Vec4, Mat1, Mat3, Iso2, Iso3, Iso4, Identity};
 use na::{ApproxEq, Cast, POrd, FloatVec, Translate, UniformSphereSample, Translation,
-         Rotate, Transform, AbsoluteRotate, Inv, ScalarSub, ScalarAdd, ScalarMul, ScalarDiv,
+         Rotate, Transform, AbsoluteRotate, Inv,
          FloatPnt, Shape, Absolute, Iterable, BaseFloat, Bounded};
 
 /// Trait implemented by scalar types.
@@ -20,8 +20,7 @@ pub trait Scalar: Copy + Send + Sync + 'static + Debug +
 
 /// Trait implemented by point types.
 pub trait Point<N, V>: Send           + Sync            + 'static      +
-                       FloatPnt<N, V> + POrd            + Bounded      + ScalarSub<N> +
-                       ScalarAdd<N>   + ScalarMul<N>    + ScalarDiv<N> +
+                       FloatPnt<N, V> + POrd            + Bounded      +
                        IndexMut<usize, Output = N> + Clone + Copy + Debug {
 }
 

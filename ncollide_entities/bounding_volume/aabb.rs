@@ -64,7 +64,6 @@ impl<P> AABB<P> {
     }
 }
 
-#[old_impl_check]
 impl<N, P, V> AABB<P>
     where N: Scalar,
           P: Point<N, V>,
@@ -82,7 +81,6 @@ impl<N, P, V> AABB<P>
     }
 }
 
-#[old_impl_check]
 impl<N, P, V> BoundingVolume<N> for AABB<P>
     where N: Scalar,
           P: Point<N, V> {
@@ -144,7 +142,6 @@ impl<N, P, V> BoundingVolume<N> for AABB<P>
     }
 }
 
-#[old_impl_check]
 impl<N, P, V> Translation<V> for AABB<P>
     where N: Scalar,
           P: Point<N, V>,

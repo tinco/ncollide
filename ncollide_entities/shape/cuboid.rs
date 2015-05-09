@@ -12,7 +12,7 @@ pub struct Cuboid<V> {
 
 impl<N, V> Cuboid<V>
     where N: Scalar,
-          V: Iterable<N> {
+          V: Iterable<Output=N> {
     /// Creates a new box from its half-extents. Half-extents are the box half-width along each
     /// axis. Each half-extent must be greater than 0.04.
     #[inline]

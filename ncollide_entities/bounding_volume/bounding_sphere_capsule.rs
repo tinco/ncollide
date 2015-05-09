@@ -4,8 +4,6 @@ use bounding_volume::{HasBoundingSphere, BoundingSphere};
 use shape::Capsule;
 use math::{Scalar, Point};
 
-
-#[old_impl_check]
 impl<N, P, V, M> HasBoundingSphere<N, P, M> for Capsule<N>
     where N: Scalar,
           P: Point<N, V>,
